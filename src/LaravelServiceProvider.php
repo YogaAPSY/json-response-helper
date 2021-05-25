@@ -24,7 +24,8 @@ class LaravelServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/json-helper.php', 'json-helper'
+            __DIR__ . '/../config/json-helper.php',
+            'json-helper'
         );
     }
 
@@ -34,7 +35,7 @@ class LaravelServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/json-helper.php' => config_path('json-helper.php'),
+            __DIR__ . '/../config/json-helper.php' => config_path('json-helper.php'),
         ]);
     }
 }

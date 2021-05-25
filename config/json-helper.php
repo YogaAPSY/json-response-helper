@@ -10,7 +10,7 @@
 
 return [
 
-    /*
+	/*
 	|--------------------------------------------------------------------------
 	| Response JSON keys mapping
 	|--------------------------------------------------------------------------
@@ -29,12 +29,12 @@ return [
 	*/
 
 	'response_key_map' => [
-        Turbo\Api\Helper\JsonResponse::KEY_CODE    => 'code',
-        Turbo\Api\Helper\JsonResponse::KEY_DATA    => 'data',
-        Turbo\Api\Helper\JsonResponse::KEY_MESSAGE => 'message',
+		Turbo\Api\Helper\JsonResponse::KEY_CODE    => 'code',
+		Turbo\Api\Helper\JsonResponse::KEY_MESSAGE => 'message',
+		Turbo\Api\Helper\JsonResponse::KEY_DATA    => 'data',
 	],
 
-    /*
+	/*
 	|--------------------------------------------------------------------------
 	| Response meta data defaults
 	|--------------------------------------------------------------------------
@@ -44,13 +44,13 @@ return [
 	|
 	*/
 
-    'response_meta_default' => [
-        'code' => 0,
-        'data' => [],
-        'message' => 'ok'
-    ],
+	'response_meta_default' => [
+		'code' => 0,
+		'message' => 'ok',
+		'data' => []
+	],
 
-    /*
+	/*
 	|--------------------------------------------------------------------------
 	| Response JSON with global headers
 	|--------------------------------------------------------------------------
@@ -60,12 +60,12 @@ return [
 	|
 	*/
 
-    'global_headers' => [
-        // 'X-AUTH-ID' => 'somethings'
-    ],
+	'global_headers' => [
+		// 'X-AUTH-ID' => 'somethings'
+	],
 
 
-    /*
+	/*
 	|--------------------------------------------------------------------------
 	| data-to-json encodong options
 	|--------------------------------------------------------------------------
@@ -85,5 +85,5 @@ return [
 	|
 	*/
 
-    // 'encoding_options' => JSON_HEX_TAG|JSON_HEX_APOS|JSON_HEX_AMP|JSON_HEX_QUOT|JSON_UNESCAPED_UNICODE,
+	// 'encoding_options' => JSON_HEX_TAG|JSON_HEX_APOS|JSON_HEX_AMP|JSON_HEX_QUOT|JSON_UNESCAPED_UNICODE,
 ];

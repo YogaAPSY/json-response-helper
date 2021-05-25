@@ -26,7 +26,8 @@ class LumenServiceProvider extends ServiceProvider
         $this->app->configure('json-helper');
 
         $this->mergeConfigFrom(
-            realpath(__DIR__.'/../config/json-helper.php'), 'json-helper'
+            realpath(__DIR__ . '/../config/json-helper.php'),
+            'json-helper'
         );
     }
 }

@@ -151,7 +151,7 @@ abstract class Code
      * @param int $code
      * @return string
      */
-    public static function getStatusText(int $code) : string
+    public static function getStatusText(int $code): string
     {
         return ucfirst(self::getMessages()[$code] ?? 'Unknown');
     }

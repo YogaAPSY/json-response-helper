@@ -17,8 +17,8 @@ class JsonResponse
 {
     const
         KEY_CODE        = 'code',
-        KEY_DATA        = 'data',
-        KEY_MESSAGE     = 'message';
+        KEY_MESSAGE     = 'message',
+        KEY_DATA        = 'data';
 
     /**
      * @param array $data
@@ -28,16 +28,18 @@ class JsonResponse
      * @param int $httpStatusCode
      * @return Response
      */
-    public static function response($data = [], string $message = 'OK', int $code = Code::OK, array $headers = [], int $httpStatusCode = Response::HTTP_OK)
+    public static function response(int $code = Code::OK, string $message = 'OK', $data = [], array $headers = [], int $httpStatusCode = Response::HTTP_OK)
     {
         if (class_exists('Illuminate\Support\Facades\Config')) {
             $code = $code ?: Config::get('json-helper.response_meta_default.code', Code::OK);
-            $data = $data ?: Config::get('json-helper.response_meta_default.data', []);
             $message = $message ?: Config::get('json-helper.response_meta_default.message', Code::getStatusText(Code::OK));
+            $data = $data ?: Config::get('json-helper.response_meta_default.data', []);
         }
 
         $response = new Response(
-            static::makePayload($data, $message, $code), $httpStatusCode, static::withGlobalHeaders($headers)
+            static::makePayload($code, $message, $data),
+            $httpStatusCode,
+            static::withGlobalHeaders($headers)
         );
 
         if (class_exists('Illuminate\Http\Response')) {
@@ -54,7 +56,7 @@ class JsonResponse
      *
      * @return array
      */
-    public static function makePayload($data, string $message, int $code)
+    public static function makePayload(int $code, string $message, $data)
     {
         $keys = [];
         if (class_exists('Illuminate\Support\Facades\Config')) {
@@ -62,10 +64,9 @@ class JsonResponse
         }
 
         return [
-            $keys[static::KEY_MESSAGE] ?? static::KEY_MESSAGE   => $message,
             $keys[static::KEY_CODE] ?? static::KEY_CODE         => $code,
-            $keys[static::KEY_DATA] ?? static::KEY_DATA         => empty($data) ? (object)[] : $data,
-            'timestamp' => time()
+            $keys[static::KEY_MESSAGE] ?? static::KEY_MESSAGE   => $message,
+            $keys[static::KEY_DATA] ?? static::KEY_DATA         => empty($data) ? [] : $data
         ];
     }
 
