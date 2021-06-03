@@ -23,7 +23,13 @@ if (!function_exists('success')) {
      */
     function success(int $code = Code::OK, string $message = 'OK', $data = [], array $headers = [], int $httpStatusCode = Response::HTTP_OK)
     {
-        return Turbo\Api\Helper\JsonResponse::response($code, $message, $data,$headers, $httpStatusCode);
+        return Turbo\Api\Helper\JsonResponse::response(
+            $code,
+            $message,
+            $data,
+            $headers,
+            $httpStatusCode
+        );
     }
 }
 
@@ -37,9 +43,15 @@ if (!function_exists('fail')) {
      * @param int $httpStatusCode
      * @return Response
      */
-    function fail(int $code = Code::FAIL, string $message = 'Fail', $data = [], array $headers = [], int $httpStatusCode = Response::HTTP_OK)
+    function fail(int $code = Code::FAIL, string $message = 'Fail', $data = [], array $headers = [], int $httpStatusCode = Response::HTTP_BAD_REQUEST)
     {
-        return Turbo\Api\Helper\JsonResponse::response($code, $message,$data,$headers,$httpStatusCode);
+        return Turbo\Api\Helper\JsonResponse::response(
+            $code,
+            $message,
+            $data,
+            $headers,
+            $httpStatusCode
+        );
     }
 }
 
@@ -59,7 +71,13 @@ if (!function_exists('unauthorized')) {
 
     function unauthorized(int $code = 401, $message = 'Unauthorized', $data = [], array $headers = [], int $httpStatusCode = 401)
     {
-        return Turbo\Api\Helper\JsonResponse::response($code,$message,$data,$headers,$httpStatusCode);
+        return Turbo\Api\Helper\JsonResponse::response(
+            $code,
+            $message,
+            $data,
+            $headers,
+            $httpStatusCode
+        );
     }
 }
 
@@ -67,6 +85,12 @@ if (!function_exists('not_found')) {
 
     function not_found(int $code = 404, $message = 'Not found', $data = [], array $headers = [], int $httpStatusCode = 404)
     {
-        return Turbo\Api\Helper\JsonResponse::response($code, $message,$data,$headers,$httpStatusCode);
+        return Turbo\Api\Helper\JsonResponse::response(
+            $code,
+            $message,
+            $data,
+            $headers,
+            $httpStatusCode
+        );
     }
 }
